@@ -9,14 +9,14 @@ describe "bills kitchen" do
     it "installs ChefDK 0.6.0" do
       run_cmd("chef -v").should match('Chef Development Kit Version: 0.6.0')
     end
-    it "installs Vagrant 1.7.2" do
-      run_cmd("vagrant -v").should match('1.7.2')
+    it "installs Vagrant 1.7.4" do
+      run_cmd("vagrant -v").should match('1.7.4')
     end
-    it "installs Terraform 0.5.3" do
-      run_cmd("terraform --version").should match('0.5.3')
+    it "installs Terraform 0.6.1" do
+      run_cmd("terraform --version").should match('0.6.1')
     end
-    it "installs Packer 0.8.1" do
-      run_cmd("packer --version").should match('0.8.1')
+    it "installs Packer 0.8.2" do
+      run_cmd("packer --version").should match('0.8.2')
     end
     it "installs Consul 0.5.2" do
       run_cmd("consul --version").should match('0.5.2')
@@ -42,20 +42,20 @@ describe "bills kitchen" do
     it "installs clink 0.4.4" do
       run_cmd("#{BUILD_DIR}/tools/clink/clink.bat version").should match('Clink v0.4.4')
     end
-    it "installs atom 1.0.0" do
+    it "installs atom 1.0.4" do
       # see https://github.com/atom/atom-shell/issues/683
       # so we 1) ensure the atom.cmd is on the PATH and 2) it's the right version
       cmd_succeeds "#{BUILD_DIR}/tools/atom/Atom/resources/cli/atom.cmd -v"
-      cmd_succeeds "grep 'Package: atom@1.0.0' #{BUILD_DIR}/tools/atom/Atom/resources/LICENSE.md"
+      cmd_succeeds "grep 'Package: atom@1.0.4' #{BUILD_DIR}/tools/atom/Atom/resources/LICENSE.md"
     end
     it "installs apm 1.0.1" do
       run_cmd("#{BUILD_DIR}/tools/atom/Atom/resources/app/apm/bin/apm.cmd -v").should match('1.0.1')
     end
-    it "installs docker 1.6.2" do
-      run_cmd("docker -v").should match('Docker version 1.6.2')
+    it "installs docker 1.7.1" do
+      run_cmd("docker -v").should match('Docker version 1.7.1')
     end
-    it "installs boot2docker-cli 1.6.2" do
-      run_cmd("boot2docker version").should match('Boot2Docker-cli version: v1.6.2')
+    it "installs boot2docker-cli 1.7.1" do
+      run_cmd("boot2docker version").should match('Boot2Docker-cli version: v1.7.1')
     end
   end
 
@@ -144,11 +144,11 @@ describe "bills kitchen" do
       it "has 'vagrant-omnibus (1.4.1)' plugin installed" do
         vagrant_plugin_installed "vagrant-omnibus", "1.4.1"
       end
-      it "has 'vagrant-cachier (1.2.0)' plugin installed" do
-        vagrant_plugin_installed "vagrant-cachier", "1.2.0"
+      it "has 'vagrant-cachier (1.2.1)' plugin installed" do
+        vagrant_plugin_installed "vagrant-cachier", "1.2.1"
       end
-      it "has 'vagrant-proxyconf (1.5.0)' plugin installed" do
-        vagrant_plugin_installed "vagrant-proxyconf", "1.5.0"
+      it "has 'vagrant-proxyconf (1.5.1)' plugin installed" do
+        vagrant_plugin_installed "vagrant-proxyconf", "1.5.1"
       end
       it "has 'vagrant-berkshelf (4.0.4)' plugin installed" do
         vagrant_plugin_installed "vagrant-berkshelf", "4.0.4"

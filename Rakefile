@@ -78,7 +78,7 @@ def acceptance_test_run_cmd(provider)
   when 'virtualbox'
     "rspec"
   when 'docker'
-    "b2d-start&& set VAGRANT_DEFAULT_PROVIDER=docker&& set KITCHEN_LOCAL_YAML=.kitchen.docker.yml&& rspec&& b2d-stop"
+    "b2d-start&& boot2docker config&& set VAGRANT_DEFAULT_PROVIDER=docker&& set KITCHEN_LOCAL_YAML=.kitchen.docker.yml&& rspec&& b2d-stop"
   else
     fail "unsupported provider for running the acceptance tests: #{provider}"
   end
@@ -116,20 +116,20 @@ end
 
 def download_tools
   [
-    %w{ github.com/boot2docker/boot2docker-cli/releases/download/v1.6.2/boot2docker-v1.6.2-windows-amd64.exe  docker/boot2docker.exe },
-    %w{ get.docker.com/builds/Windows/x86_64/docker-1.6.2.exe                                                 docker/docker.exe },
-    %w{ github.com/Maximus5/ConEmu/releases/download/v15.06.21/ConEmuPack.150621.7z                         conemu },
+    %w{ github.com/boot2docker/boot2docker-cli/releases/download/v1.7.1/boot2docker-v1.7.1-windows-amd64.exe  docker/boot2docker.exe },
+    %w{ get.docker.com/builds/Windows/x86_64/docker-1.7.1.exe                                                 docker/docker.exe },
+    %w{ github.com/Maximus5/ConEmu/releases/download/v15.07.28/ConEmuPack.150728.7z                         conemu },
     %w{ github.com/mridgers/clink/releases/download/0.4.4/clink_0.4.4_setup.exe                             clink },
-    %w{ github.com/atom/atom/releases/download/v1.0.0/atom-windows.zip                                      atom },
+    %w{ github.com/atom/atom/releases/download/v1.0.4/atom-windows.zip                                      atom },
     %w{ github.com/msysgit/msysgit/releases/download/Git-1.9.5-preview20150319/PortableGit-1.9.5-preview20150319.7z   portablegit },
     %w{ cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe                devkit },
     %w{ downloads.sourceforge.net/project/kdiff3/kdiff3/0.9.96/KDiff3Setup_0.9.96.exe                       kdiff3
         kdiff3.exe },
     %w{ the.earth.li/~sgtatham/putty/0.63/x86/putty.zip                                                     putty },
     %w{ www.itefix.net/dl/cwRsync_5.4.1_x86_Free.zip                                                        cwrsync },
-    %w{ dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2.msi                                                  vagrant },
-    %w{ dl.bintray.com/mitchellh/terraform/terraform_0.5.3_windows_amd64.zip                                terraform },
-    %w{ dl.bintray.com/mitchellh/packer/packer_0.8.1_windows_amd64.zip                                      packer },
+    %w{ dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4.msi                                                  vagrant },
+    %w{ dl.bintray.com/mitchellh/terraform/terraform_0.6.1_windows_amd64.zip                                terraform },
+    %w{ dl.bintray.com/mitchellh/packer/packer_0.8.2_windows_amd64.zip                                      packer },
     %w{ dl.bintray.com/mitchellh/consul/0.5.2_windows_386.zip                                               consul },
     %w{ opscode-omnibus-packages.s3.amazonaws.com/windows/2008r2/x86_64/chefdk-0.6.0-1.msi                  chef-dk }
   ]
@@ -166,7 +166,7 @@ end
 
 # workaround for mitchellh/vagrant#4073
 def fix_vagrant
-  orig = "#{BUILD_DIR}/tools/vagrant/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.7.2/plugins/synced_folders/rsync/helper.rb"
+  orig = "#{BUILD_DIR}/tools/vagrant/HashiCorp/Vagrant/embedded/gems/gems/vagrant-1.7.4/plugins/synced_folders/rsync/helper.rb"
   patched = File.read(orig).gsub('hostpath = Vagrant::Util', 'hostpath = "/cygdrive" + Vagrant::Util')
   File.write(orig, patched)
 end
@@ -185,8 +185,8 @@ def install_vagrant_plugins
     command = "#{BUILD_DIR}/set-env.bat \
     && vagrant plugin install vagrant-toplevel-cookbooks --plugin-version 0.2.4 \
     && vagrant plugin install vagrant-omnibus --plugin-version 1.4.1 \
-    && vagrant plugin install vagrant-cachier --plugin-version 1.2.0 \
-    && vagrant plugin install vagrant-proxyconf --plugin-version 1.5.0 \
+    && vagrant plugin install vagrant-cachier --plugin-version 1.2.1 \
+    && vagrant plugin install vagrant-proxyconf --plugin-version 1.5.1 \
     && vagrant plugin install vagrant-berkshelf --plugin-version 4.0.4 \
     && vagrant plugin install vagrant-winrm --plugin-version 0.7.0"
     fail "vagrant plugin installation failed" unless system(command)

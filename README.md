@@ -1,7 +1,8 @@
 
 # Bill's Kitchen
 
-[![Build status](https://ci.appveyor.com/api/projects/status/pl0vwkbyeavs9036/branch/master?svg=true)](https://ci.appveyor.com/project/tknerr/bills-kitchen/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/d7j751lm3fm8gu9s/branch/master?svg=true)](https://ci.appveyor.com/project/tknerr/bills-kitchen/branch/master)
+
 
 A [DevPack](http://blog.tknerr.de/blog/2014/10/09/devpack-philosophy-aka-works-on-your-machine/) with all you (or Bill Gates would) need for cooking with Chef, Vagrant and Docker on Windows, shrink-wrapped in a portable package.
 
@@ -26,11 +27,11 @@ The main tools for cooking with Chef / Vagrant:
 
 * [ChefDK](http://www.getchef.com/downloads/chef-dk/windows/) 0.6.0, with embedded [Ruby](http://rubyinstaller.org/downloads/) 2.1.5
 * [DevKit](http://rubyinstaller.org/add-ons/devkit/) 4.7.2
-* [Vagrant](http://vagrantup.com/) 1.7.2
-* [Terraform](http://terraform.io/) 0.5.3
-* [Packer](http://packer.io/) 0.8.1
+* [Vagrant](http://vagrantup.com/) 1.7.4
+* [Terraform](http://terraform.io/) 0.6.1
+* [Packer](http://packer.io/) 0.8.2
 * [Consul](http://consul.io/) 0.5.2
-* [Docker](http://docker.io/) 1.6.2 (using boot2docker)
+* [Docker](http://docker.io/) 1.7.1 (using boot2docker)
 
 ### Plugins
 
@@ -38,7 +39,7 @@ These plugins are pre-installed:
 
  * vagrant plugins:
    * [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus) - installs omnibus chef in a vagrant VM
-   * [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) - caches all kinds of packages you intsall in the vagrant VMs
+   * [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) - caches all kinds of packages you install in the vagrant VMs
    * [vagrant-berkshelf](https://github.com/berkshelf/vagrant-berkshelf) - berkshelf integration for vagrant
    * [vagrant-toplevel-cookbooks](https://github.com/tknerr/vagrant-toplevel-cookbooks) - support for one top-level cookbook per vagrant VM
    * [vagrant-proxyconf](https://github.com/tmatilai/vagrant-proxyconf) - for configuring a proxy inside the VMs
@@ -46,7 +47,7 @@ These plugins are pre-installed:
    * ...use `vagrant install <plugin>` to install more
  * knife plugins (just as an example):
    * [knife-audit](https://github.com/jbz/knife-audit) - keeps track of which cookbooks are used by which node
-   * [knife-server](https://github.com/fnichol/knife-server) - sets up and backs uo a chef server
+   * [knife-server](https://github.com/fnichol/knife-server) - sets up and backs up a chef server
    * ...use `chef gem install <plugin>` to install more
 
 ### Supporting Tools
